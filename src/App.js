@@ -1,6 +1,6 @@
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import Todos from './components/Todos';
+import Auth from './views/Auth';
 import Home from './views/Home';
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/todos">
-            <Todos />
+          <Route exact path="/auth">
+            <Auth />
           </Route>
         </Switch>
       </BrowserRouter>
