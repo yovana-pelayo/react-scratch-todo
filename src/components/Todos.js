@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import getTodos from '../services/todos';
+import TodoForm from './TodoForm';
 
 export default function Todos() {
   const [todos, setTodos] = useState('');
@@ -10,5 +11,9 @@ export default function Todos() {
     };
     fetchData();
   }, []);
-  return <div>{todos}</div>;
+  return (
+    <div>
+      <TodoForm />
+    </div>
+  );
 }
