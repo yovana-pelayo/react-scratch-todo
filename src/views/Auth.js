@@ -1,22 +1,27 @@
 import React from 'react';
 import { useState } from 'react';
 import { signInUser, signupUser } from '../services/users';
-export default function Auth() {
+
+export default function Auth({ setCurrentUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [type, setType] = useState('sign-in');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (type === 'sign-in') {
-      await signInUser(email, password);
-    } else {
-      await signupUser(email, password);
+    try {
+      const resp = await signInUser(email, password);
+      setCurrentUser(resp.email);
+    } catch (e) {
+      setError(e.message);
     }
   };
   return (
     <div>
       <h1>
+        {error && <p>{error}</p>}
+
         <span className={type === 'sign-in' ? 'active' : ''} onClick={() => setType('sign-in')}>
           Sign In
         </span>

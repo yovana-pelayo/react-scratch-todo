@@ -11,9 +11,5 @@ export default function Todos() {
     };
     fetchData();
   }, []);
-  return (
-    <div>
-      <TodoForm />
-    </div>
-  );
+  return <div></div>;
 }
