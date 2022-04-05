@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { signInUser, signupUser } from '../services/users';
+import { signInUser } from '../services/users';
 
 export default function Auth({ setCurrentUser }) {
   const [email, setEmail] = useState('');

@@ -22,6 +22,7 @@ export default function CreateTodo() {
     fetchData();
   }, [params.id]);
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       await createTodos({ id: params.id, title, message, by });
       history.push(`/todos/${params.id}`);
@@ -31,6 +32,8 @@ export default function CreateTodo() {
   };
   return (
     <div>
+      {' '}
+      {error && <p>{error}</p>}
       <TodoForm
         {...{
           title,
