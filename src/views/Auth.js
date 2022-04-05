@@ -22,29 +22,33 @@ export default function Auth(items) {
   };
 
   return (
-    <div>
-      <h1>
-        <span className={type === 'signin' ? 'active' : ''} onClick={() => setType('signin')}>
-          Sign In
-        </span>
-        <span className={type === 'signup' ? 'active' : ''} onClick={() => setType('signup')}>
-          Sign Up
-        </span>
-      </h1>
-      <form className="auth" onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <label>
-          Password:
-          <input
-            type="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button>Enter</button>
+    <div className="auth">
+      <h3 className={type === 'signin' ? 'active' : ''} onClick={() => setType('signin')}>
+        Sign In
+      </h3>
+      <h3 className={type === 'signup' ? 'active' : ''} onClick={() => setType('signup')}>
+        Sign Up
+      </h3>
+
+      <div className="error-message">{errorMessage} </div>
+      <form className="form" onSubmit={handleSubmit}>
+        <div>
+          <label>
+            Email:
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Password:
+            <input
+              type="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+        </div>
+        <input type="submit" />
       </form>
     </div>
   );

@@ -1,14 +1,15 @@
 import React from 'react';
 
-export default function CreateTodo({ newNote, setNewNote, handleSubmit }) {
+export default function CreateTodo({ newNotes, setNewNotes, handleSubmit }) {
   return (
     <div>
       <input
-        value={newNote}
-        onChange={(e) => setNewNote(e.target.value)}
+        value={newNotes}
+        onChange={(e) => setNewNotes(e.target.value)}
         type="text"
         placeholder="add new note"
       />
+      {''}
       <button onClick={handleSubmit}>save</button>
     </div>
   );

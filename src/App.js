@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css';
 import Header from './components/Header';
 import { getUser, logout } from './services/users';
@@ -18,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Header handleLogout={handleLogout} currentUser={currentUser} />
         <Switch>
-          <Route exact path="/">
+          <Route to="/" exact>
             {currentUser && <Home />}
             {!currentUser && <Auth setCurrentUser={setCurrentUser} />}
           </Route>

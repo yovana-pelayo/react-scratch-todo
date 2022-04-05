@@ -16,15 +16,15 @@ export default function Home() {
   const handleSubmit = async () => {
     const resp = await createTodos(newNotes);
     setNewNotes('');
-    const updatedToDos = await getTodos();
-    setNotes(updatedToDos);
-    // setNotes((prev) => [...prev, resp]);
+    // const updatedToDos = await getTodos();
+    // setNotes(updatedToDos);
+    setNotes((prev) => [...prev, resp]);
   };
   const handleClick = async (note) => {
     const resp = await updateCompleted(note.id, !note.complete);
-    const updatedToDos = await getTodos();
-    setNotes(updatedToDos);
-    //   setNotes((prevState) => prevState.map((todos) => (todos.id === note.id ? resp : todos)));
+    // const updatedToDos = await getTodos();
+    // setNotes(updatedToDos);
+    setNotes((prevState) => prevState.map((todos) => (todos.id === note.id ? resp : todos)));
   };
   return (
     <div>
