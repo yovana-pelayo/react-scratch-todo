@@ -3,11 +3,14 @@ export default async function getTodos() {
   const resp = await client.from('todosReact').select('*');
   return resp;
 }
-export async function getTodosById(id) {
-  const resp = await client.from('todosReact').select('*').match({ id }).single();
+
+export async function createTodos() {
+  const resp = await client
+    .from('todosReact')
+    .insert([{ notes: notes, user_id: client.auth.user().id }]);
   return checkError(resp);
 }
-export async function createTodos(todo) {
-  const resp = await client.from('todosReact').insert(todo);
+export async function updateCompleted(id, complete) {
+  const resp = await client.from('todosReact').update({ complete }).eq('id', id).single();
   return checkError(resp);
 }

@@ -24,9 +24,6 @@ function App() {
             {currentUser && <Home />}
             {!currentUser && <Auth setCurrentUser={setCurrentUser} />}
           </Route>
-          <Route exact path="/todos">
-            <Todos />
-          </Route>
         </Switch>
       </BrowserRouter>
     </div>

@@ -1,17 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import { createTodos, getTodosById } from '../services/todos';
+import { createTodos } from '../services/todos';
 import TodoForm from './TodoForm';
 // import React from  './react'
 
 export default function CreateTodo() {
-  const params = useParams();
-  const history = useHistory();
-  const [title, setTitle] = useState('');
-  const [message, setMessage] = useState('');
-  const [by, setBy] = useState('');
-  const [error, setError] = useState('');
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await getTodosById(params.id);
