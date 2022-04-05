@@ -5,7 +5,7 @@ import { signInUser } from '../services/users';
 export default function Auth({ setCurrentUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [type, setType] = useState('sign-in');
+  const [type, setType] = useState('signin');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
@@ -22,7 +22,7 @@ export default function Auth({ setCurrentUser }) {
       <h1>
         {error && <p>{error}</p>}
 
-        <span className={type === 'sign-in' ? 'active' : ''} onClick={() => setType('sign-in')}>
+        <span className={type === 'signin' ? 'active' : ''} onClick={() => setType('signin')}>
           Sign In
         </span>
         <span className={type === 'sign-up' ? 'active' : ''} onClick={() => setType('sign-up')}>

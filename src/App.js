@@ -21,16 +21,11 @@ function App() {
         <Header handleLogout={handleLogout} currentUser={currentUser} />
         <Switch>
           <Route exact path="/">
-            currentUser && <Home />
-          </Route>
-          <Route exact path="/auth">
-            <Auth setCurrentUser={setCurrentUser} />
+            {currentUser && <Home />}
+            {!currentUser && <Auth setCurrentUser={setCurrentUser} />}
           </Route>
           <Route exact path="/todos">
             <Todos />
-          </Route>
-          <Route exact path="/todos/:id/create">
-            {currentUser ? <CreateTodo /> : <Redirect to="/auth" />}
           </Route>
         </Switch>
       </BrowserRouter>
