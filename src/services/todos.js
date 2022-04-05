@@ -1,16 +1,17 @@
-import { checkError, client } from './client.js';
-export default async function getTodos() {
-  const resp = await client.from('todosReact').select('*');
-  return resp;
+import { client, checkError } from './client';
+
+export async function getTodos() {
+  const resp = await client.from('todos_react').select('*');
+  return checkError(resp);
 }
 
-export async function createTodos() {
+export async function createTodos(notes) {
   const resp = await client
-    .from('todosReact')
+    .from('todos_react')
     .insert([{ notes: notes, user_id: client.auth.user().id }]);
   return checkError(resp);
 }
 export async function updateCompleted(id, complete) {
-  const resp = await client.from('todosReact').update({ complete }).eq('id', id).single();
+  const resp = await client.from('todos_react').update({ complete }).eq('id', id).single();
   return checkError(resp);
 }

@@ -1,43 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import { createTodos } from '../services/todos';
-import TodoForm from './TodoForm';
-// import React from  './react'
+import React from 'react';
 
-export default function CreateTodo() {
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getTodosById(params.id);
-      setTitle(data.title);
-      setMessage(data.message);
-      setBy(data.by);
-    };
-    fetchData();
-  }, [params.id]);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await createTodos({ id: params.id, title, message, by });
-      history.push(`/todos/${params.id}`);
-    } catch (e) {
-      setError('Whoops. Something went wrong');
-    }
-  };
+export default function CreateTodo({ newNote, setNewNote, handleSubmit }) {
   return (
     <div>
-      {' '}
-      {error && <p>{error}</p>}
-      <TodoForm
-        {...{
-          title,
-          setTitle,
-          message,
-          setMessage,
-          by,
-          setBy,
-          handleSubmit,
-        }}
+      <input
+        value={newNote}
+        onChange={(e) => setNewNote(e.target.value)}
+        type="text"
+        placeholder="add new note"
       />
+      <button onClick={handleSubmit}>save</button>
     </div>
   );
 }
