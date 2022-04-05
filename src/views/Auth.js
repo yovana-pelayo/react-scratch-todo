@@ -1,31 +1,33 @@
 import React from 'react';
 import { useState } from 'react';
-import { signInUser } from '../services/users';
+import { signInUser, signupUser } from '../services/users';
 
-export default function Auth({ setCurrentUser }) {
+export default function Auth(items) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [type, setType] = useState('signin');
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage('');
+    if (!email || !password) return;
     try {
-      const resp = await signInUser(email, password);
-      setCurrentUser(resp.email);
+      const user =
+        type === 'signin' ? await signInUser(email, password) : await signupUser(email, password);
+      items.setCurrentUser(user.email);
     } catch (e) {
-      setError(e.message);
+      e.message ? setErrorMessage(e.message) : setErrorMessage('Something went wrong. Refresh!');
     }
   };
+
   return (
     <div>
       <h1>
-        {error && <p>{error}</p>}
-
         <span className={type === 'signin' ? 'active' : ''} onClick={() => setType('signin')}>
           Sign In
         </span>
-        <span className={type === 'sign-up' ? 'active' : ''} onClick={() => setType('sign-up')}>
+        <span className={type === 'signup' ? 'active' : ''} onClick={() => setType('signup')}>
           Sign Up
         </span>
       </h1>
