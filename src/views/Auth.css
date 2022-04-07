@@ -1,0 +1,18 @@
+.auth {
+  color: blue;
+}
+ul {
+  list-style: none;
+  color: blue;
+}
+.auth {
+  display: flex;
+  flex-direction: row;
+}
+.form {
+  padding: 100%;
+}
+.active {
+  color: Green;
+  text-decoration: underline;
+}
