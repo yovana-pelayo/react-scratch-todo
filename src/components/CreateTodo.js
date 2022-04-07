@@ -15,4 +15,4 @@ export default function CreateTodo({ newNotes, setNewNotes, handleSubmit }) {
     </div>
   );
 }
-// why are there dependencies in this fucntion but normally it is left blank. Is it because we are being specific with id? not sure why. or what is dependent on what> The todo is dependent on the inputs?
+// why are there dependencies in this function but normally it is left blank. Is it because we are being specific with id? not sure why. or what is dependent on what> The todo is dependent on the inputs?
