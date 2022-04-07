@@ -15,3 +15,7 @@ export async function updateCompleted(id, complete) {
   const resp = await client.from('todos_react').update({ complete }).eq('id', id).single();
   return checkError(resp);
 }
+// export async function deleteNote() {
+//   const resp = await client.from('todos_react').delete();
+//   return checkError(resp);
+// }

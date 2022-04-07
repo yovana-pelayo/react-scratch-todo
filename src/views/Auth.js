@@ -23,12 +23,12 @@ export default function Auth(items) {
 
   return (
     <div className="auth">
-      <h3 className={type === 'signin' ? 'active' : ''} onClick={() => setType('signin')}>
+      <span className={type === 'signin' ? 'active' : ''} onClick={() => setType('signin')}>
         Sign In
-      </h3>
-      <h3 className={type === 'signup' ? 'active' : ''} onClick={() => setType('signup')}>
+      </span>
+      <span className={type === 'signup' ? 'active' : ''} onClick={() => setType('signup')}>
         Sign Up
-      </h3>
+      </span>
 
       <div className="error-message">{errorMessage} </div>
       <form className="form" onSubmit={handleSubmit}>

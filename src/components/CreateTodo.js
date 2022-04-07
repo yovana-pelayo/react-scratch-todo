@@ -5,6 +5,7 @@ export default function CreateTodo({ newNotes, setNewNotes, handleSubmit }) {
     <div>
       <input
         value={newNotes}
+        // required
         onChange={(e) => setNewNotes(e.target.value)}
         type="text"
         placeholder="add new note"

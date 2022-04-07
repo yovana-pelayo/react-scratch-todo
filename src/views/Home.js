@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import CreateTodo from '../components/CreateTodo';
 import Todos from '../components/Todos';
 import { createTodos, updateCompleted, getTodos } from '../services/todos';
+import './Home.css';
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
@@ -15,22 +16,22 @@ export default function Home() {
   }, []);
   const handleSubmit = async () => {
     const resp = await createTodos(newNotes);
-    setNewNotes('');
+    // setNewNotes('');
     // const updatedToDos = await getTodos();
     // setNotes(updatedToDos);
-    setNotes((prev) => [...prev, resp]);
+    setNotes((prev) => [...prev, resp[0]]);
   };
   const handleClick = async (note) => {
-    const resp = await updateCompleted(note.id, !note.complete);
-    // const updatedToDos = await getTodos();
-    // setNotes(updatedToDos);
-    setNotes((prevState) => prevState.map((todos) => (todos.id === note.id ? resp : todos)));
+    await updateCompleted(note.id, !note.complete);
+    const updatedToDos = await getTodos();
+    setNotes(updatedToDos);
+    // setNotes((prevState) => prevState.map((todos) => (todos.id === note.id ? resp : todos)));
   };
   return (
     <div>
       <h1>My Todos List</h1>
       <Todos notes={notes} handleClick={handleClick} />
-      <CreateTodo newNote={newNotes} setNewNotes={setNewNotes} handleSubmit={handleSubmit} />
+      <CreateTodo newNotes={newNotes} setNewNotes={setNewNotes} handleSubmit={handleSubmit} />
     </div>
   );
 }

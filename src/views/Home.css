@@ -1,0 +1,30 @@
+.active {
+  color: #ff8800;
+  text-decoration: underline;
+  text-decoration-style: border;
+}
+.form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 40px;
+}
+.auth {
+  margin: 4em;
+  background-color: rgba(16, 97, 16, 0.76);
+  border: 5px solid #ff8800;
+  padding: 30px;
+}
+header {
+  color: #ff8800;
+}
+body {
+  background-color: #ff880077;
+}
+input {
+  color: #ff8800;
+}
+button {
+  border: 2px solid #ff8800;
+}
